@@ -32,13 +32,13 @@ class _countPageState extends State<CounterPage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          // print('Learning flutter');
-          setState(() {
-            _count++;
-          });
-        },
-      ));
+      floatingActionButton: _createButtons());
 }
+
+Widget _createButtons() => Row(
+      children: [
+        FloatingActionButton(child: Icon(Icons.add_a_photo), onPressed: null),
+        FloatingActionButton(child: Icon(Icons.add_a_photo), onPressed: null),
+        FloatingActionButton(child: Icon(Icons.add_a_photo), onPressed: null)
+      ],
+    );
