@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CounterPage extends StatefulWidget {
@@ -36,9 +37,13 @@ class _countPageState extends State<CounterPage> {
 }
 
 Widget _createButtons() => Row(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        FloatingActionButton(child: Icon(Icons.add_a_photo), onPressed: null),
-        FloatingActionButton(child: Icon(Icons.add_a_photo), onPressed: null),
-        FloatingActionButton(child: Icon(Icons.add_a_photo), onPressed: null)
+        SizedBox(width: 30.0),
+        FloatingActionButton(child: Icon(Icons.exposure_zero), onPressed: null),
+        Expanded(child: SizedBox(width: 30.0)),
+        FloatingActionButton(child: Icon(Icons.remove), onPressed: null),
+        SizedBox(width: 30.0),
+        FloatingActionButton(child: Icon(Icons.add), onPressed: null),
       ],
     );
