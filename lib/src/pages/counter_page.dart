@@ -6,8 +6,8 @@ class CounterPage extends StatefulWidget {
 }
 
 class _countPageState extends State<CounterPage> {
-  TextStyle textStyle = TextStyle(fontSize: 22.0);
-  int count = 0;
+  TextStyle _textStyle = TextStyle(fontSize: 22.0);
+  int _count = 0;
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -22,11 +22,11 @@ class _countPageState extends State<CounterPage> {
           children: [
             Text(
               'Numero de clics',
-              style: textStyle,
+              style: _textStyle,
             ),
             Text(
-              '$count',
-              style: textStyle,
+              '$_count',
+              style: _textStyle,
             ),
           ],
         ),
@@ -35,7 +35,10 @@ class _countPageState extends State<CounterPage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          print('Learning flutter');
+          // print('Learning flutter');
+          setState(() {
+            _count++;
+          });
         },
       ));
 }
