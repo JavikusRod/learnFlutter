@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   TextStyle textStyle = TextStyle(fontSize: 22.0);
+  int count = 0;
+
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
@@ -18,7 +20,7 @@ class HomePage extends StatelessWidget {
               style: textStyle,
             ),
             Text(
-              '0',
+              '$count',
               style: textStyle,
             ),
           ],
