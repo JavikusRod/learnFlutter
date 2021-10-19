@@ -25,6 +25,9 @@ class HomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        child: Icon(Icons.add),
+        onPressed: () {
+          print('Learning flutter');
+        },
       ));
 }
