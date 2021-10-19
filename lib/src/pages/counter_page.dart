@@ -34,16 +34,29 @@ class _countPageState extends State<CounterPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: _createButtons());
-}
 
-Widget _createButtons() => Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        SizedBox(width: 30.0),
-        FloatingActionButton(child: Icon(Icons.exposure_zero), onPressed: null),
-        Expanded(child: SizedBox(width: 30.0)),
-        FloatingActionButton(child: Icon(Icons.remove), onPressed: null),
-        SizedBox(width: 30.0),
-        FloatingActionButton(child: Icon(Icons.add), onPressed: null),
-      ],
-    );
+  Widget _createButtons() => Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          SizedBox(width: 30.0),
+          FloatingActionButton(
+              child: Icon(Icons.exposure_zero), onPressed: _reset),
+          Expanded(child: SizedBox(width: 30.0)),
+          FloatingActionButton(child: Icon(Icons.remove), onPressed: _remove),
+          SizedBox(width: 30.0),
+          FloatingActionButton(child: Icon(Icons.add), onPressed: _add),
+        ],
+      );
+
+  void _add() {
+    setState(() => _count++);
+  }
+
+  void _remove() {
+    setState(() => _count--);
+  }
+
+  void _reset() {
+    setState(() => _count = 0);
+  }
+}
