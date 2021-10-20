@@ -15,26 +15,37 @@ class HomePage extends StatelessWidget {
   Widget _list() {
     return FutureBuilder(
       future: menuProvider.loadData(),
-      initialData: [],
+      // initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
         print('Builder');
-        return ListView(children: _listView());
+        return ListView(children: _listView(snapshot.data));
       },
     );
   }
 
-  List<Widget> _listView() => [
-        ListTile(
-          title: Text("First Parranda"),
-        ),
-        Divider(),
-        ListTile(
-          title: Text("Second"),
-        ),
-        Divider(),
-        ListTile(
-          title: Text("3rd"),
-        ),
-        Divider(),
-      ];
+  List<Widget> _listView(List<dynamic>? data) {
+    //Need o solve the null possibility
+    final List<Widget> options = [];
+    if (data != null) {
+      data.forEach((element) {
+        final widgetTemp = ListTile(
+          title: Text(element['text']),
+          onTap: () {},
+          leading: Icon(
+            Icons.account_circle,
+            color: Colors.blue,
+          ),
+          trailing: Icon(
+            Icons.keyboard_arrow_right,
+            color: Colors.red,
+          ),
+        );
+        options
+          ..add(widgetTemp)
+          ..add(Divider());
+      });
+      return options;
+    }
+    return options;
+  }
 }
