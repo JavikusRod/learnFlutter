@@ -18,19 +18,21 @@ class HomePage extends StatelessWidget {
       future: menuProvider.loadData(),
       // initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
-        return ListView(children: _listView(snapshot.data));
+        return ListView(children: _listView(snapshot.data, context));
       },
     );
   }
 
-  List<Widget> _listView(List<dynamic>? data) {
+  List<Widget> _listView(List<dynamic>? data, BuildContext context) {
     //Need o solve the null possibility
     final List<Widget> options = [];
     if (data != null) {
       data.forEach((element) {
         final widgetTemp = ListTile(
           title: Text(element['text']),
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, element['route']);
+          },
           leading: getIcon(iconName: element['icon']),
           trailing: Icon(
             Icons.keyboard_arrow_right,

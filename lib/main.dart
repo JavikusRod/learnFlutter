@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test1/src/pages/home_page.dart';
+import 'package:test1/src/routes/routes.dart';
 // import 'package:test1/src/pages/home_temp.dart';
 
 void main() => runApp(MyApp());
@@ -8,8 +8,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Components',
-        debugShowCheckedModeBanner: false,
-        home: HomePage());
+      title: 'Components',
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      onUnknownRoute: (settings) => notFoundRoute(settings),
+      routes: getAppRoutes(), // home: HomePage());
+    );
   }
 }
