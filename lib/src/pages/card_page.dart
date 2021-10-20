@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 class CardPage extends StatelessWidget {
@@ -10,10 +8,7 @@ class CardPage extends StatelessWidget {
         ),
         body: ListView(
           padding: EdgeInsets.all(10),
-          children: [
-            _cardType1(),
-            _cardType1(),
-          ],
+          children: [_cardType1(), _cardType2()],
         ),
       );
 
@@ -46,5 +41,21 @@ class CardPage extends StatelessWidget {
         ),
         color: Colors.white30,
         elevation: 2.0,
+      );
+
+  Card _cardType2() => Card(
+        child: Column(
+          children: const [
+            FadeInImage(
+              placeholder: AssetImage('assets/jar-loading.gif'),
+              image: NetworkImage(
+                  //Sometime the url dont work for some urls
+                  'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
+              height: 400.0,
+              fit: BoxFit.cover,
+              fadeInDuration: Duration(milliseconds: 200),
+            )
+          ],
+        ),
       );
 }
