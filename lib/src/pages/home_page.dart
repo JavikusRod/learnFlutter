@@ -11,7 +11,24 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _list() {
-    return ListView(children: [],);
+  Widget _list() {
+    return ListView(
+      children: _listView(),
+    );
   }
+
+  List<Widget> _listView() => [
+        ListTile(
+          title: Text("First"),
+        ),
+        Divider(),
+        ListTile(
+          title: Text("Second"),
+        ),
+        Divider(),
+        ListTile(
+          title: Text("3rd"),
+        ),
+        Divider(),
+      ];
 }
