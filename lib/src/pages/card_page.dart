@@ -13,6 +13,9 @@ class CardPage extends StatelessWidget {
       );
 
   Card _cardType1() => Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        color: Colors.white,
+        elevation: 5.0,
         child: Column(
           children: [
             ListTile(
@@ -39,13 +42,15 @@ class CardPage extends StatelessWidget {
             )
           ],
         ),
-        color: Colors.white30,
-        elevation: 2.0,
       );
 
   Card _cardType2() => Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        elevation: 5,
+        shadowColor: Colors.red,
+        clipBehavior: Clip.antiAlias,
         child: Column(
-          children: const [
+          children: [
             FadeInImage(
               placeholder: AssetImage('assets/jar-loading.gif'),
               image: NetworkImage(
@@ -54,6 +59,10 @@ class CardPage extends StatelessWidget {
               height: 400.0,
               fit: BoxFit.cover,
               fadeInDuration: Duration(milliseconds: 200),
+            ),
+            Container(
+              padding: EdgeInsets.all(10.0),
+              child: Text('Some Name to the Image'),
             )
           ],
         ),
