@@ -12,7 +12,7 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
   double _height = 50.0;
   Color _color = Colors.pink;
 
-  final BorderRadiusGeometry _borderRadius = BorderRadius.circular(8.0);
+  BorderRadiusGeometry _borderRadius = BorderRadius.circular(8.0);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,9 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
         title: Text(' Animated Container'),
       ),
       body: Center(
-        child: Container(
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 500),
+          curve: Curves.fastOutSlowIn,
           width: _width,
           height: _height,
           decoration: BoxDecoration(
@@ -41,7 +43,9 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
     setState(() {
       _width = Random().nextInt(300).toDouble();
       _height = Random().nextInt(300).toDouble();
-      _color = Colors.blue;
+      _color = Color.fromRGBO(Random().nextInt(255), Random().nextInt(255),
+          Random().nextInt(255), Random().nextDouble());
+      _borderRadius = BorderRadius.circular(Random().nextInt(100).toDouble());
     });
   }
 }
