@@ -6,7 +6,8 @@ class SliderPage extends StatefulWidget {
 }
 
 class _SliderPageState extends State<SliderPage> {
-  double _sliderValue = 0.0;
+  double _sliderValue = 100.0;
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -15,22 +16,27 @@ class _SliderPageState extends State<SliderPage> {
         body: Container(
           padding: EdgeInsets.only(top: 50),
           child: Column(
-            children: [_createSlider()],
+            children: [_createSlider(), Expanded(child: _createImage())],
           ),
         ),
       );
 
   _createSlider() => Slider(
       activeColor: Colors.purple,
-      inactiveColor: Colors.blue,
-      divisions: 20,
+      // divisions: 5,
       label: 'Image size',
       value: _sliderValue,
       min: 0,
-      max: 100,
+      max: 400,
       onChanged: (value) {
         setState(() {
           _sliderValue = value;
         });
       });
+
+  _createImage() => Image(
+        image: AssetImage('assets/jar-loading.gif'),
+        width: _sliderValue,
+        fit: BoxFit.contain,
+      );
 }
