@@ -9,6 +9,8 @@ class _InputPageState extends State<InputPage> {
   late String _stuff = '';
   late String _email = '';
   late String _password = '';
+  late String _date = '';
+  TextEditingController _inputDateController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +83,7 @@ class _InputPageState extends State<InputPage> {
         FocusScope.of(context).requestFocus(new FocusNode());
         _selectDate(context);
       },
+      controller: _inputDateController,
       decoration: InputDecoration(
           label: Text('Birth date'),
           hintText: 'Birth date',
@@ -95,5 +98,11 @@ class _InputPageState extends State<InputPage> {
         initialDate: new DateTime.now(),
         firstDate: new DateTime(2019),
         lastDate: new DateTime(2022));
+    if (picked != null) {
+      setState(() {
+        _date = picked.toString();
+        _inputDateController.text = _date;
+      });
+    }
   }
 }
