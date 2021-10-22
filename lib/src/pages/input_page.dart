@@ -25,6 +25,8 @@ class _InputPageState extends State<InputPage> {
             Divider(),
             _createPassword(),
             Divider(),
+            _createBirthDatePicker(context),
+            Divider(),
             ListTile(
               title: Text('Stuff written: $_stuff'),
               subtitle: Text('Email: $_email $_password'),
@@ -33,7 +35,7 @@ class _InputPageState extends State<InputPage> {
         ));
   }
 
-  _createInput() => TextField(
+  TextField _createInput() => TextField(
       onChanged: (value) => setState(() {
             _stuff = value;
           }),
@@ -47,7 +49,7 @@ class _InputPageState extends State<InputPage> {
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(20.0))));
 
-  _createMail() => TextField(
+  TextField _createMail() => TextField(
       onChanged: (value) => setState(() {
             _email = value;
           }),
@@ -60,7 +62,7 @@ class _InputPageState extends State<InputPage> {
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(20.0))));
 
-  _createPassword() => TextField(
+  TextField _createPassword() => TextField(
       onChanged: (value) => setState(() {
             _password = value;
           }),
@@ -73,4 +75,25 @@ class _InputPageState extends State<InputPage> {
           suffixIcon: Icon(Icons.lock_open),
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(20.0))));
+
+  _createBirthDatePicker(BuildContext context) => TextField(
+      onTap: () {
+        FocusScope.of(context).requestFocus(new FocusNode());
+        _selectDate(context);
+      },
+      decoration: InputDecoration(
+          label: Text('Birth date'),
+          hintText: 'Birth date',
+          icon: Icon(Icons.calendar_today),
+          suffixIcon: Icon(Icons.perm_contact_calendar),
+          border:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(20.0))));
+
+  void _selectDate(BuildContext context) async {
+    DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: new DateTime.now(),
+        firstDate: new DateTime(2019),
+        lastDate: new DateTime(2022));
+  }
 }
