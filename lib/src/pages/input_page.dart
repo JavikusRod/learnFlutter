@@ -6,11 +6,13 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  final TextEditingController _inputDateController = TextEditingController();
+
   late String _stuff = '';
   late String _email = '';
   late String _password = '';
   late String _date = '';
-  TextEditingController _inputDateController = new TextEditingController();
+  late String _selectedOption = 'Stuff to select';
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,8 @@ class _InputPageState extends State<InputPage> {
             _createPassword(),
             Divider(),
             _createBirthDatePicker(context),
+            Divider(),
+            _createDropdown(),
             Divider(),
             ListTile(
               title: Text('Stuff written: $_stuff'),
@@ -78,7 +82,7 @@ class _InputPageState extends State<InputPage> {
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(20.0))));
 
-  _createBirthDatePicker(BuildContext context) => TextField(
+  TextField _createBirthDatePicker(BuildContext context) => TextField(
       onTap: () {
         FocusScope.of(context).requestFocus(new FocusNode());
         _selectDate(context);
@@ -106,4 +110,28 @@ class _InputPageState extends State<InputPage> {
       });
     }
   }
+
+  _createDropdown() => DropdownButton(
+        items: const [
+          DropdownMenuItem<String>(
+            value: 'Dog',
+            child: Text('Dog'),
+          ),
+          DropdownMenuItem<String>(
+            value: 'Cats',
+            child: Text('Cats'),
+          ),
+          DropdownMenuItem<String>(
+            value: 'Stuff to select',
+            child: Text('Stuff to select'),
+          ),
+        ],
+        value: _selectedOption,
+        onChanged: (opt) {
+          print(opt);
+          setState(() {
+            _selectedOption = opt.toString();
+          });
+        },
+      );
 }
