@@ -12,7 +12,7 @@ class _InputPageState extends State<InputPage> {
   late String _email = '';
   late String _password = '';
   late String _date = '';
-  late String _selectedOption = 'Stuff to select';
+  late String _selectedOption = 'Dog';
 
   @override
   Widget build(BuildContext context) {
@@ -111,27 +111,38 @@ class _InputPageState extends State<InputPage> {
     }
   }
 
-  _createDropdown() => DropdownButton(
-        items: const [
-          DropdownMenuItem<String>(
-            value: 'Dog',
-            child: Text('Dog'),
+  _createDropdown() => Row(children: [
+        Icon(Icons.select_all),
+        SizedBox(
+          width: 30,
+        ),
+        Expanded(
+          child: DropdownButton(
+            isExpanded: true,
+            items: const [
+              DropdownMenuItem<String>(
+                value: 'Dog',
+                child: Text('Dog'),
+              ),
+              DropdownMenuItem<String>(
+                value: 'Cats',
+                child: Text('Cats'),
+              ),
+              DropdownMenuItem<String>(
+                value: 'Stuff to select',
+                child: Text('Stuff to select'),
+              ),
+            ],
+            value: _selectedOption,
+            onChanged: (opt) {
+              setState(() {
+                _selectedOption = opt.toString();
+              });
+            },
           ),
-          DropdownMenuItem<String>(
-            value: 'Cats',
-            child: Text('Cats'),
-          ),
-          DropdownMenuItem<String>(
-            value: 'Stuff to select',
-            child: Text('Stuff to select'),
-          ),
-        ],
-        value: _selectedOption,
-        onChanged: (opt) {
-          print(opt);
-          setState(() {
-            _selectedOption = opt.toString();
-          });
-        },
-      );
+        ),
+        SizedBox(
+          width: 29,
+        ),
+      ]);
 }
