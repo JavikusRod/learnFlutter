@@ -7,13 +7,20 @@ class ListPage extends StatefulWidget {
 
 class _ListPageState extends State<ListPage> {
   late List<int> _listItems = [];
-
+  ScrollController _scrollController = ScrollController();
   int _lastItem = 0;
 
   @override
   void initState() {
     super.initState();
     _add10();
+
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        _add10();
+      }
+    });
   }
 
   @override
@@ -24,6 +31,7 @@ class _ListPageState extends State<ListPage> {
       body: _createList());
 
   _createList() => ListView.builder(
+      controller: _scrollController,
       itemCount: _listItems.length,
       itemBuilder: (BuildContext context, int index) {
         final image = _listItems[index];
