@@ -65,6 +65,8 @@ class _ListPageState extends State<ListPage> {
     setState(() {});
     return Timer(Duration(seconds: 2), () {
       _isLoading = false;
+      _scrollController.animateTo(_scrollController.position.pixels + 150,
+          duration: Duration(milliseconds: 250), curve: Curves.fastOutSlowIn);
       _add10();
     });
   }
