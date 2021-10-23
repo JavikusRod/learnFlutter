@@ -69,5 +69,21 @@ class _ListPageState extends State<ListPage> {
     });
   }
 
-  _createLoading() => _isLoading ? CircularProgressIndicator() : Container();
+  _createLoading() => _isLoading
+      ? Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircularProgressIndicator(),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 60.0),
+                ),
+              ],
+            ),
+          ],
+        )
+      : Container();
 }
