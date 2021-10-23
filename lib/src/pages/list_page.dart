@@ -28,11 +28,19 @@ class _ListPageState extends State<ListPage> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: Text('List Page'),
       ),
-      body: _createList());
+      body: Stack(
+        children: [_createList(), _createLoading()],
+      ));
 
   _createList() => ListView.builder(
       controller: _scrollController,
@@ -60,4 +68,6 @@ class _ListPageState extends State<ListPage> {
       _add10();
     });
   }
+
+  _createLoading() => _isLoading ? CircularProgressIndicator() : Container();
 }
