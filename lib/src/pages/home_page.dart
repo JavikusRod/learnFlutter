@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,5 +24,18 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Container _cardSwiper() => Container();
+  Container _cardSwiper() => Container(
+        padding: EdgeInsets.only(top: 10),
+        width: double.infinity,
+        height: 400,
+        child: Swiper(
+          layout: SwiperLayout.STACK,
+          itemWidth: 300,
+          itemCount: 4,
+          itemBuilder: (BuildContext context, int index) => Image.asset(
+            'assets/no-image.jpg',
+            fit: BoxFit.fill,
+          ),
+        ),
+      );
 }
