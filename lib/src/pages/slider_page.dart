@@ -7,6 +7,7 @@ class SliderPage extends StatefulWidget {
 
 class _SliderPageState extends State<SliderPage> {
   double _sliderValue = 100.0;
+  bool _checkBoxInput = true;
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -16,7 +17,11 @@ class _SliderPageState extends State<SliderPage> {
         body: Container(
           padding: EdgeInsets.only(top: 50),
           child: Column(
-            children: [_createSlider(), Expanded(child: _createImage())],
+            children: [
+              _createSlider(),
+              _checkBox(),
+              Expanded(child: _createImage()),
+            ],
           ),
         ),
       );
@@ -28,15 +33,27 @@ class _SliderPageState extends State<SliderPage> {
       value: _sliderValue,
       min: 0,
       max: 400,
-      onChanged: (value) {
-        setState(() {
-          _sliderValue = value;
-        });
-      });
+      onChanged: _checkBoxInput
+          ? null
+          : (value) {
+              setState(() {
+                _sliderValue = value;
+              });
+            });
 
-  _createImage() => Image(
+  Image _createImage() => Image(
         image: AssetImage('assets/jar-loading.gif'),
         width: _sliderValue,
         fit: BoxFit.contain,
+      );
+
+  _checkBox() => CheckboxListTile(
+        title: Text('Disable Slider'),
+        onChanged: (value) {
+          setState(() {
+            _checkBoxInput = value!;
+          });
+        },
+        value: _checkBoxInput,
       );
 }
