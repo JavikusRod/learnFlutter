@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:test1/src/widgets/card_swiper.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -24,18 +24,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Container _cardSwiper() => Container(
-        padding: EdgeInsets.only(top: 10),
-        width: double.infinity,
-        height: 400,
-        child: Swiper(
-          layout: SwiperLayout.STACK,
-          itemWidth: 300,
-          itemCount: 4,
-          itemBuilder: (BuildContext context, int index) => Image.asset(
-            'assets/no-image.jpg',
-            fit: BoxFit.fill,
-          ),
-        ),
-      );
+  dynamic _cardSwiper() => CardSwiper(list: [1, 2, 3, 4, 5]);
 }
