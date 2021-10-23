@@ -20,6 +20,7 @@ class _SliderPageState extends State<SliderPage> {
             children: [
               _createSlider(),
               _checkBox(),
+              _switch(),
               Expanded(child: _createImage()),
             ],
           ),
@@ -56,4 +57,13 @@ class _SliderPageState extends State<SliderPage> {
         },
         value: _checkBoxInput,
       );
+
+  _switch() => SwitchListTile(
+      title: Text('Disable Slider with styleee'),
+      value: _checkBoxInput,
+      onChanged: (value) {
+        setState(() {
+          _checkBoxInput = value;
+        });
+      });
 }
