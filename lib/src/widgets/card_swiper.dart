@@ -7,18 +7,24 @@ class CardSwiper extends StatelessWidget {
   CardSwiper({required this.list});
 
   @override
-  Widget build(BuildContext context) => Container(
-        padding: EdgeInsets.only(top: 10),
-        width: double.infinity,
-        height: 400,
-        child: Swiper(
-          layout: SwiperLayout.STACK,
-          itemWidth: 300,
-          itemCount: 4,
-          itemBuilder: (BuildContext context, int index) => Image.asset(
+  Widget build(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
+
+    return Container(
+      padding: EdgeInsets.only(top: 10),
+      child: Swiper(
+        layout: SwiperLayout.STACK,
+        itemWidth: _screenSize.width * 0.7,
+        itemHeight: _screenSize.height * 0.5,
+        itemCount: 4,
+        itemBuilder: (BuildContext context, int index) => ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.asset(
             'assets/no-image.jpg',
-            fit: BoxFit.fill,
+            fit: BoxFit.cover,
           ),
         ),
-      );
+      ),
+    );
+  }
 }
