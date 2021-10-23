@@ -42,16 +42,20 @@ class _ListPageState extends State<ListPage> {
         children: [_createList(), _createLoading()],
       ));
 
-  _createList() => ListView.builder(
-      controller: _scrollController,
-      itemCount: _listItems.length,
-      itemBuilder: (BuildContext context, int index) {
-        final image = _listItems[index];
-        return FadeInImage(
-          image: NetworkImage('https://picsum.photos/500/300/?=image=$image'),
-          placeholder: AssetImage('assets/jar-loading.gif'),
-        );
-      });
+  _createList() => RefreshIndicator(
+        onRefresh: _newList,
+        child: ListView.builder(
+            controller: _scrollController,
+            itemCount: _listItems.length,
+            itemBuilder: (BuildContext context, int index) {
+              final image = _listItems[index];
+              return FadeInImage(
+                image: NetworkImage(
+                    'https://picsum.photos/500/300/?=image=$image'),
+                placeholder: AssetImage('assets/jar-loading.gif'),
+              );
+            }),
+      );
 
   void _add10() {
     for (var i = 1; i <= 10; i++) {
@@ -88,4 +92,13 @@ class _ListPageState extends State<ListPage> {
           ],
         )
       : Container();
+
+  Future<void> _newList() async {
+    Timer(Duration(seconds: 2), () {
+      _listItems.clear();
+      _lastItem++;
+      _add10();
+    });
+    return Future.delayed(Duration(seconds: 2));
+  }
 }
