@@ -6,7 +6,16 @@ class ListPage extends StatefulWidget {
 }
 
 class _ListPageState extends State<ListPage> {
-  List<int> _listItems = [1, 2, 3, 4, 5];
+  late List<int> _listItems = [];
+
+  int _lastItem = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _add10();
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
@@ -23,4 +32,11 @@ class _ListPageState extends State<ListPage> {
           placeholder: AssetImage('assets/jar-loading.gif'),
         );
       });
+
+  void _add10() {
+    for (var i = 1; i <= 10; i++) {
+      _listItems.add(_lastItem++);
+      setState(() {});
+    }
+  }
 }
