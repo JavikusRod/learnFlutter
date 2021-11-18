@@ -111,4 +111,12 @@ class Movie {
     map['vote_count'] = _voteCount;
     return map;
   }
+
+  getPosterImg() {
+    if (posterPath == null) {
+      return 'https://www.google.com/search?q=empty+image+png&rlz=1C1CHBF_enUS909US909&sxsrf=AOaemvKbs6PIIcKHysMsLj8Op93QPufO7g:1637258921872&tbm=isch&source=iu&ictx=1&fir=vgR-wVirpwk-ZM%252COyzm5WgKiY89TM%252C_%253Bk7pneGfVyX1baM%252CLvRT88a5ESKrnM%252C_%253BuVfAVFKPjEumxM%252Cb7KDL3tF5rdwbM%252C_%253BPXpRxN8xlBUmmM%252ClzVXK-2jzerhVM%252C_%253BK4Az1YzZykBfzM%252Cb7KDL3tF5rdwbM%252C_%253BhBSfwNmKxqQF-M%252Cren7PE-CvYel0M%252C_%253BQesLvgW5oDHu3M%252CF9ibtVOxEk7MkM%252C_%253BGHbdym26eAzRCM%252CFdNZT9hRZ6zyYM%252C_%253B22oKByn4PJzFCM%252CLvRT88a5ESKrnM%252C_%253Bxgu3M79rH6DQ8M%252C9C6XzOEBfbr-WM%252C_%253BIbj5MbPPuVbTEM%252CbSowxv4SMxSR6M%252C_%253B1S0-D4Absd7b5M%252Cz2Eyhg7v_c0PxM%252C_%253Bj8pKBXRhAA2woM%252Cren7PE-CvYel0M%252C_%253BsAm9qzf6pV-eBM%252CZdNimX02nf7mgM%252C_%253Bw0Qs0CejTr2HiM%252Cren7PE-CvYel0M%252C_&vet=1&usg=AI4_-kSBcGzMg9-sCCps1Goj4ef2KjzJBw&sa=X&ved=2ahUKEwjUzMXjwKL0AhWsSzABHeLGANAQ9QF6BAgMEAE#imgrc=sAm9qzf6pV-eBM';
+    } else {
+      return 'https://image.tmdb.org/t/p/w500/$posterPath';
+    }
+  }
 }
