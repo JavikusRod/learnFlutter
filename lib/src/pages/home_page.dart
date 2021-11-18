@@ -44,8 +44,15 @@ class _HomePageState extends State<HomePage> {
     return SizedBox(
       width: double.infinity,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Populares', style: Theme.of(context).textTheme.subtitle1),
+          Container(
+              padding: EdgeInsets.only(left: 20),
+              child: Text('Populares',
+                  style: Theme.of(context).textTheme.subtitle1)),
+          SizedBox(
+            height: 5,
+          ),
           FutureBuilder(
               future: _moviesProvider.getPopulars(),
               builder: (context, AsyncSnapshot snapshot) {
