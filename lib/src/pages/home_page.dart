@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
             return CardSwiper(list: snapshot.data);
           } else {
             return SizedBox(
-                height: 400, child: Center(child: CircularProgressIndicator()));
+                height: 300, child: Center(child: CircularProgressIndicator()));
           }
         });
   }
