@@ -17,7 +17,7 @@ class CardSwiper extends StatelessWidget {
         layout: SwiperLayout.STACK,
         itemWidth: _screenSize.width * 0.7,
         itemHeight: _screenSize.height * 0.5,
-        itemCount: 4,
+        itemCount: 20,
         itemBuilder: (BuildContext context, int index) => ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: FadeInImage(
