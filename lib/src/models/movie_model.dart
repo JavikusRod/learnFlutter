@@ -3,10 +3,6 @@ class Movies {
   Movies();
 
   Movies.fromJsonList(List<dynamic> jsonList) {
-    if (jsonList == null) {
-      return;
-    }
-
     for (var item in jsonList) {
       final movie = Movie.fromJson(item);
       items.add(movie);
