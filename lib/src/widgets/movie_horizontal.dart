@@ -14,12 +14,12 @@ class MovieHorizontal extends StatelessWidget {
       child: PageView(
         pageSnapping: false,
         controller: PageController(initialPage: 1, viewportFraction: 0.35),
-        children: _cards(),
+        children: _cards(context),
       ),
     );
   }
 
-  _cards() {
+  _cards(BuildContext context) {
     return list
         .map(
           (Movie movie) => Column(
@@ -29,8 +29,16 @@ class MovieHorizontal extends StatelessWidget {
                 child: FadeInImage(
                     placeholder: AssetImage('assets/no-image.jpg'),
                     image: NetworkImage(movie.getPosterImg()),
-                    height: 160,
+                    height: 145,
                     fit: BoxFit.cover),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                movie.title!,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.caption,
               )
             ],
           ),
