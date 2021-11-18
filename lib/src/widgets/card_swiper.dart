@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:test1/src/models/movie_model.dart';
 
 class CardSwiper extends StatelessWidget {
-  late final List<dynamic> list;
+  late final List<Movie> list;
 
   CardSwiper({required this.list});
 
@@ -18,12 +19,12 @@ class CardSwiper extends StatelessWidget {
         itemHeight: _screenSize.height * 0.5,
         itemCount: 4,
         itemBuilder: (BuildContext context, int index) => ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Image.asset(
-            'assets/no-image.jpg',
-            fit: BoxFit.cover,
-          ),
-        ),
+            borderRadius: BorderRadius.circular(20),
+            child: FadeInImage(
+              image: NetworkImage(list[index].getPosterImg()),
+              placeholder: AssetImage('assets/no-image.jpg'),
+              fit: BoxFit.cover,
+            )),
       ),
     );
   }
