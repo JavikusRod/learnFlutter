@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test1/src/providers/movies.provider.dart';
 import 'package:test1/src/widgets/card_swiper.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,5 +25,9 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  dynamic _cardSwiper() => CardSwiper(list: [1, 2, 3, 4, 5]);
+  dynamic _cardSwiper() {
+    return FutureBuilder(
+      future: movies,
+    )
+  }
 }
