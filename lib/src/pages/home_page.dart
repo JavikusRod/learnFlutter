@@ -26,8 +26,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   dynamic _cardSwiper() {
+    final _moviesProvider = MoviesProvider();
     return FutureBuilder(
-      future: movies,
-    )
+        future: _moviesProvider.getNowPlaying(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            return CardSwiper(list: snapshot.data);
+          } else {
+            return SizedBox(
+                height: 500, child: Center(child: CircularProgressIndicator()));
+          }
+        });
   }
 }
